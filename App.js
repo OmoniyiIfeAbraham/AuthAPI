@@ -39,3 +39,4 @@ mongoose
 
 // routes
 app.use("/register", require("./routes/Auth/Register")); //register route
+app.use("/login", require("./routes/Auth/Login")); //login route
