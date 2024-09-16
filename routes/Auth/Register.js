@@ -17,32 +17,18 @@ router.post("/", async (req, res) => {
         Error: "A User with this Email already Exists.",
       });
 
+    if (Collect.Password !== Collect.ConfirmPassword) {
+      return res.status(500).json({
+        Access: true,
+        Error: "Password and Confirm Password must be the same.",
+      });
+    }
+
     if (Collect.Password?.length < 6)
       return res.status(500).json({
         Access: true,
         Error: "Password must be more than 6 characters",
       });
-
-    if (
-      !Collect.Password?.includes("$") ||
-      !Collect.Password?.includes(".") ||
-      !Collect.Password?.includes("-") ||
-      !Collect.Password?.includes("_") ||
-      !Collect.Password?.includes(",") ||
-      !Collect.Password?.includes("/") ||
-      !Collect.Password?.includes("?") ||
-      !Collect.Password?.includes("@") ||
-      !Collect.Password?.includes("!") ||
-      !Collect.Password?.includes("%") ||
-      !Collect.Password?.includes("*") ||
-      !Collect.Password?.includes("&")
-    ) {
-      return res.status(500).json({
-        Access: true,
-        Error:
-          "Password SHould Contain One special character from the set (@, $, !, %, *, ?, &)",
-      });
-    }
 
     // hash password
     Collect.Password = bcrypt.hashSync(Collect.Password, 10);
@@ -117,7 +103,7 @@ router.post("/", async (req, res) => {
                 <div class="container">
                   <div class="header">
                     <h1>Welcome
-                    }!</h1>
+                    </h1>
                   </div>
                   <div class="content">
                     <p>Hello ${NewUser.FirstName},</p>

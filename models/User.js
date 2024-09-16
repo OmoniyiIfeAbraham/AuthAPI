@@ -8,7 +8,7 @@ const User = new Schema({
   },
   LastName: {
     type: String,
-    required: [true, "First Name is Required"],
+    required: [true, "Last Name is Required"],
   },
   Email: {
     type: String,
