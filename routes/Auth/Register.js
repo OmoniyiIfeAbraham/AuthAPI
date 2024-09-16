@@ -1,5 +1,6 @@
 const express = require("express");
-const { Errordisplay, Sendmail } = require("../../utils/Auth");
+const { Errordisplay } = require("../../utils/Auth");
+const { Sendmail } = require("../../utils/Mailer");
 const User = require("../../models/User");
 const router = express.Router();
 const bcrypt = require("bcrypt");

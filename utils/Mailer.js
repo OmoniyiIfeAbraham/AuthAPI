@@ -18,7 +18,7 @@ const myemail = mailer.createTransport({
 async function Sendmail(to, subject, html, many = false) {
   try {
     const mailoption = {
-      from: `${process.env.Company} <${process.env.email}>`,
+      from: `${process.env.Company} <${process.env.Email}>`,
       ...{ bcc: to },
       subject: subject,
       html: html,
