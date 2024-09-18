@@ -11,6 +11,10 @@ const BodyParser = require("body-parser");
 app.use(BodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(BodyParser.json({ extended: true, limit: "50mb" }));
 
+//cors
+const cors = require("cors");
+app.use(cors());
+
 // session
 app.use(
   require("express-session")({
